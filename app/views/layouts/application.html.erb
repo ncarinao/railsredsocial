@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Red</title>
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark"">
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="/">Home</a>
+          </li>
+          <%- if  user_signed_in? %>
+            <li class="nav-item">
+              <%= link_to 'Nueva Imagen', new_image_path, class: 'nav-link'%>
+            </li>
+            <li class="nav-item">
+              <%= link_to 'Cambiar Contra', edit_user_registration_path, class: 'nav-link'%>
+            </li>
+            <li class="nav-item">
+              <%= link_to 'Salir', destroy_user_session_path, method: :delete, class: 'nav-link'%>
+            </li>
+           
+            
+          <% else %>
+            <li class="nav-item">
+              <%= link_to 'Iniciar', new_user_session_path, class: 'nav-link'%>
+            </li>
+            <li class="nav-item">
+              <%= link_to 'Registrarme', new_user_registration_path, class: 'nav-link'%>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </nav>
+    
+    <div class="container">
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+    </div>
+    <div class="card col-12">
+      <%= yield %>
+    </div>
+
+   
+  </body>
+</html>

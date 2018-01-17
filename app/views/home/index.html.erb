@@ -1,0 +1,30 @@
+<%- if user_signed_in? %>	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <h4><%= current_user.name %></h4>
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <p class="nav-link">
+              Informacion
+            </p>
+          </li>
+          <li class="nav-item">
+            <p class="nav-link">
+            	<%= @images.count %> publicaciones
+            </p>
+          </li>
+        </ul>
+      </div>
+    </nav>
+	<br>
+<div class="container">
+	<div class="row" id='images'> 
+		<%= render @images %>
+	</div>
+</div>
+
+<%= will_paginate @images %>
+<% else %>
+	<h1>Bienvenido a SalvaGram</h1>
+<% end %>
+
+
